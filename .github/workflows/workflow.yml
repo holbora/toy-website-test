@@ -36,11 +36,11 @@ jobs:
       name: Run preflight validation
       with:
         deploymentName: ${{ github.run_number }}
-        resourceGroupName: $${{ env.AZURE_RESOURCEGROUP_NAME }}
+        resourceGroupName: ${{ env.AZURE_RESOURCEGROUP_NAME }}
         template: ./deploy/main.bicep
         parameters: environmentType=${{ env.ENVIRONMENT_TYPE }}
         deploymentMode: Validate
-        
+
   deploy:
     runs-on: ubuntu-latest
     needs: [lint, validate]
